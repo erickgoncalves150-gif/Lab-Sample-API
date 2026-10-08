@@ -5,11 +5,15 @@ export function cadastrar(amostra) {
 }
 
 export function listar() {
-     return amostras;
+    return amostras;
 }
 
 export function buscarPorIndice(indice) {
     return amostras[indice];
+}
+
+export function atualizar(indice, amostra) {
+    amostras[indice] = amostra;
 }
 
 export function excluir(indice) {

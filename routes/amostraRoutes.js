@@ -3,7 +3,8 @@ import {
     cadastrarAmostra, 
     listarAmostras, 
     buscarAmostra, 
-    excluirAmostra 
+    atualizarAmostra,
+    excluirAmostra
 } from '../controller/amostraController.js';
 
 const router = express.Router();
@@ -11,6 +12,7 @@ const router = express.Router();
 router.post('/', cadastrarAmostra);
 router.get('/', listarAmostras);
 router.get('/:indice', buscarAmostra);
+router.patch('/:indice', atualizarAmostra);
 router.delete('/:indice', excluirAmostra);
 
 export default router;

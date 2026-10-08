@@ -1,8 +1,8 @@
 export class Amostra {
-    constructor(codigo, material, origin, resultado) {
+    constructor(codigo, material, origem, resultado) {
         this.codigo = codigo;
         this.material = material;
-        this.origem = origin; 
+        this.origem = origem;
         this.resultado = resultado;
     }
 }

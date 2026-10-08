@@ -3,11 +3,12 @@ import * as repository from '../repository/amostraRepository.js';
 
 export function cadastrarAmostra(req, res) {
     const { codigo, material, origem, resultado } = req.body;
-    
     const novaAmostra = new Amostra(codigo, material, origem, resultado);
     
     repository.cadastrar(novaAmostra);
-    res.status(201).json({ mensagem: 'Amostra cadastrada com sucesso!', dados: novaAmostra });
+    
+
+    res.status(201).json({ mensagem: 'Amostra cadastrada com sucesso!'});
 }
 
 export function listarAmostras(req, res) {
@@ -26,8 +27,21 @@ export function buscarAmostra(req, res) {
     res.status(200).json(amostra);
 }
 
-export function excluirAmostra(req, res) {
+export function atualizarAmostra(req, res) {
     const { indice } = req.params;
+    const amostra = repository.buscarPorIndice(Number(indice));
+
+    if (!amostra) {
+        return res.status(404).json({ erro: 'Amostra não encontrada.' });
+    }
+
+    Object.assign(amostra, req.body);
+
+    res.status(200).json({ mensagem: 'Amostra atualizada com sucesso!' });
+}
+
+export function excluirAmostra(req, res) {
+    const { indice } = req.params.indice;
     const amostraExists = repository.buscarPorIndice(Number(indice));
     
     if (!amostraExists) {
